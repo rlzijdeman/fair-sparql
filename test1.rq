@@ -1,0 +1,24 @@
+#+  summary: test1S
+#+  description: test1D
+#+  endpoint: https://api.triplydb.com/datasets/DBpedia-association/dbpedia/services/dbpedia/sparql
+#+  method: GET
+#+  tags:
+#+    - sex
+#+    - segregation
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?male ?female WHERE {
+  {SELECT (COUNT(*) as ?male) {
+    ?sub rdf:type dbo:Person ;
+        foaf:gender ?male.
+    FILTER(?male = "male"@en)
+  } }
+    
+  {SELECT (COUNT(*) as ?female) {
+     ?sub rdf:type dbo:Person ;
+        foaf:gender ?female.
+    FILTER(?female = "female"@en)
+    } }
+}
