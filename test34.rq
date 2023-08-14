@@ -1,0 +1,12 @@
+#+  summary: simple query
+#+  description: does the trick
+#+  endpoint: https://dbpedia.org/sparql
+#+  method: GET
+#+  tags:
+#+    - testing
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+  ?sub ?pred ?obj .
+} LIMIT 10
